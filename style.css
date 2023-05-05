@@ -55,7 +55,6 @@ input::placeholder {
 }
 
 .postal-data {
-  border: 2px solid black;
   margin-top: 1rem;
   border-radius: 10px;
   display: grid;
