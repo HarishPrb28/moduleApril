@@ -1,4 +1,4 @@
-var ipAddr = "";
+var ipAddress = "";
 var ipTag = document.querySelector("h3");
 var token = "daac54fe5de3a6";
 var ipData = "";
@@ -10,17 +10,17 @@ var postalData = "";
 var postalElement = document.querySelector(".postal-data");
 
 async function getIp() {
-  ipAddr = await fetch("https://api.ipify.org?format=json")
+  ipAddress = await fetch("https://api.ipify.org?format=json")
     .then((response) => response.json())
     .then((data) => data.ip);
 }
 
 getIp().then(() => {
-  ipTag.innerText += ipAddr;
+  ipTag.innerText += ipAddress;
 });
 
 async function getData() {
-  ipData = await fetch(`https://ipinfo.io/${ipAddr}?token=${token}`)
+  ipData = await fetch(`https://ipinfo.io/${ipAddress}?token=${token}`)
     .then((response) => response.json())
     .then((data) => (ipData = data));
   lat = ipData.loc.split(",")[0];
@@ -31,7 +31,6 @@ async function getData() {
 function getCurrentTime(timeZone) {
   var now = new Date();
 
-  // Create options object with specified time zone
   var options = {
     timeZone: timeZone,
     weekday: "long",
@@ -43,11 +42,9 @@ function getCurrentTime(timeZone) {
     second: "numeric",
   };
 
-  // Format the date and time according to the options
   const formatter = new Intl.DateTimeFormat([], options);
   var dateAndTime = formatter.format(now);
 
-  // Return the formatted date and time
   return dateAndTime;
 }
 
